@@ -4,7 +4,7 @@ let usernameexist = false;
 let usernamearray;
 
 function userprompt(){
-    username = prompt("Enter Your Full Name : ");
+    username = prompt("Please enter your participant id: ");
 }
 userprompt();
 
