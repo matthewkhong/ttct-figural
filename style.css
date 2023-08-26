@@ -3,11 +3,9 @@ body{
     overscroll-behavior-y: none; /* Disabling Pull Down To Refresh*/
     background-color: #fff;
     color: black;
-}
-
-#draw{
-  font-size: 34px;
-  font-family: 'Raleway', sans-serif;
+    border: black;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
 }
 
 #sketchcontainer{
@@ -21,55 +19,7 @@ body{
   align-items: center;
   justify-content: center;
   */
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
   margin-bottom: 10px;
-}
-
-.line2{
-  /*
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  */
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
-}
-
-.line3{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
-
-.sliderClass{
-  -webkit-appearance : none;
-  height: 13px;
-  width: 50%;
-  cursor: pointer;
-  border-radius: 20px;
-  outline: none;
-  background: #d3d3d3;
-  margin-left: 20px;
-}
-
-.sliderClass::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    background: #4CAF50;
-    cursor: pointer;
-}
-  
-.sliderClass::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
 }
 
 .undo{
@@ -77,9 +27,7 @@ body{
   border-radius: 5px;
   background-color: #ff0000;
   color: #FFFFFF;
-  font-size: 34px;
-  font-family: 'Raleway', sans-serif;
-  margin-left: 20px;
+  font-size: 20px;
 }
 
 .clear{
@@ -88,8 +36,6 @@ body{
   border-radius: 5px;
   background-color: #ff0000;
   color: #FFFFFF;
-  font-size: 34px;
-  font-family: 'Raleway', sans-serif;
 }
 
 /* Color Selector Button Style : */
@@ -111,9 +57,7 @@ body{
   appearance: none;
   border-radius: 5px;
   background-color: deeppink;
-  color: white;
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
+  color: black;
 }
 
 .brushSettingsClass{
@@ -123,8 +67,6 @@ body{
   border-radius: 5px;
   background-color: deeppink;
   color: white;
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
 }
 
 /* Submission Button Style */
@@ -132,8 +74,6 @@ body{
   border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
   margin-right: 10px;
@@ -145,8 +85,6 @@ body{
   border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
-  font-size: 38px;
-  font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
   font-style: oblique;

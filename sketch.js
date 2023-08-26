@@ -14,6 +14,11 @@ let lastBrush = []; //Last Brush Type
 let imgStorageRef, databaseRef; // Firebase References
 let finalData; //Stores The Submission On Submit Button Press
 let colorNumber = 1; //Stores Current Color's Index Number
+let img; // Declare variable 'img'.
+
+function preload() {
+    img = loadImage('https://matthewkhong.github.io/assets/img/circles.png')
+}
 
 function setup(){
     //Window Setup
@@ -22,8 +27,9 @@ function setup(){
     windowy = windowHeight * 0.8;
 
     canvas1 = createCanvas(windowx, windowy);
-    background(0);
+    background(255);
     canvas1.parent("sketchcontainer");
+    background(img);
 
     //Database Setup
     var storage = firebase.storage();
@@ -37,13 +43,13 @@ function setup(){
     createElement("br");
 
     //---------------------------------------------------------------- Line 1 Canvas
-    var line1 = createDiv("Brush Size : ");
+    var line1 = createDiv("");
     line1.addClass("line1");
 
     //Slider
-    slider = createSlider(10,70,50);
-    slider.addClass('sliderClass');
-    line1.child(slider);
+    slider = createSlider(8,70,8);
+    //slider.addClass('sliderClass');
+    //line1.child(slider);
 
     //Undo Button
     var undo = createButton("Undo");
@@ -58,64 +64,25 @@ function setup(){
     clear.addClass("clear");
 
     //---------------------------------------------------------------- Line 2 div
-    var line2 = createDiv("Color : ");
-    line2.addClass("line2");
-
-    //All The Color Buttons
-    whiteC = createButton("  ");      whiteC.addClass("ColorButtons");
-    blackC = createButton("  ");      blackC.addClass("ColorButtons");
-    blueC = createButton("  ");       blueC.addClass("ColorButtons");
-    greenC = createButton("  ");      greenC.addClass("ColorButtons");
-    yellowC = createButton("  ");     yellowC.addClass("ColorButtons");
-    orangeC = createButton("  ");     orangeC.addClass("ColorButtons");
-    pinkC = createButton("  ");       pinkC.addClass("ColorButtons");
-    redC = createButton("  ");        redC.addClass("ColorButtons");
-    purpelC = createButton("  ");     purpelC.addClass("ColorButtons");
-    
-    whiteC.style("background-color","#ffffff");
-    blackC.style("background-color","#000000");
-    blueC.style("background-color","#3f92ff");
-    greenC.style("background-color","#0aff0a");
-    yellowC.style("background-color","#ffff0a");
-    orangeC.style("background-color","#ffa00a");
-    pinkC.style("background-color","#ff0a82");
-    redC.style("background-color","#ff0a0a");
-    purpelC.style("background-color","#b432ff");
-
-    line2.child(whiteC);    line2.child(blackC);    line2.child(blueC);
-    line2.child(greenC);    line2.child(yellowC);   line2.child(orangeC);
-    line2.child(pinkC);     line2.child(redC);      line2.child(purpelC);
-    
-    BreakElement = createElement("br");
-    line2.child(BreakElement);
-    line2.child(BreakElement);
-
-    whiteC.mousePressed(function ()  {colorNumber = 1;}  );
-    blackC.mousePressed(function ()  {colorNumber = 2;}  );
-    blueC.mousePressed(function ()   {colorNumber = 3;}  );
-    greenC.mousePressed(function ()  {colorNumber = 4;}  );
-    yellowC.mousePressed(function () {colorNumber = 5;}  );
-    orangeC.mousePressed(function () {colorNumber = 6;}  );
-    pinkC.mousePressed(function ()   {colorNumber = 7;}  );
-    redC.mousePressed(function ()    {colorNumber = 8;}  );
-    purpelC.mousePressed(function () {colorNumber = 9;}  );
+    //var line2 = createDiv("");
+    //line2.addClass("line2");
 
     //---------------------------------------------------------------- Line 3 Div
-    var line3 = createDiv();
-    line3.addClass("line3");
+    //var line3 = createDiv();
+    //line3.addClass("line3");
     
-    eraserSettings = createButton("Set Eraser");
-    brushSettings = createButton("Set Brush");
+    eraserSettings = createButton("Eraser");
+    brushSettings = createButton("Brush");
     eraserSettings.addClass("eraserSettingsClass");
     brushSettings.addClass("brushSettingsClass");
-    line3.child(eraserSettings);
-    line3.child(brushSettings);
+    line1.child(eraserSettings);
+    line1.child(brushSettings);
 
         //Submit Buttons
         submitButton = createButton("Submit");
         viewSubmissionsButton = createButton("View Submissions");
-        line3.child(submitButton);
-        line3.child(viewSubmissionsButton);
+        line1.child(submitButton);
+        line1.child(viewSubmissionsButton);
         submitButton.mousePressed(submit);
         viewSubmissionsButton.mousePressed(viewsub);
             //Submit Button & View Submissions Button Style :
@@ -139,66 +106,9 @@ if(isMobileDevice() == true){
 
     function touchStarted(){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
-            switch(colorNumber){
-                case 1:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(255);
-                break;
-        
-            case 2:
-                r.unshift(0);            
-                g.unshift(0);            
-                b.unshift(0);            
-                break;
-        
-            case 3:
-                r.unshift(63);
-                g.unshift(146);
-                b.unshift(255);
-                break;
-        
-            case 4:
-                r.unshift(10);
-                g.unshift(255);
-                b.unshift(10);
-                break;
-        
-            case 5:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(10);
-                break;
-        
-            case 6:
-                r.unshift(255);
-                g.unshift(160);
-                b.unshift(10);
-                break;
-        
-            case 7:
-                r.unshift(255);
-                g.unshift(10);
-                b.unshift(130);
-                break;
-        
-            case 8:
-                r.unshift(255);
-                g.unshift(10);
-                b.unshift(10);
-                break;
-        
-            case 9:
-                r.unshift(180);
-                g.unshift(50);
-                b.unshift(255);
-                break;
-        
-            default:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(255);
-            }
+            r.unshift(0);
+            g.unshift(0);
+            b.unshift(0);
 
             radius = slider.value();
             mhx = [];
@@ -235,76 +145,9 @@ if(isMobileDevice() == true){
 //--------------------------------------- Setting Up Pointer For Mouse
     function mousePressed(){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
-            switch(colorNumber){
-                case 1:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(255);
-                console.log("White");
-                break;
-        
-            case 2:
-                r.unshift(0);            
-                g.unshift(0);            
-                b.unshift(0);
-                console.log("Black");            
-                break;
-        
-            case 3:
-                r.unshift(63);
-                g.unshift(146);
-                b.unshift(255);
-                console.log("Blue");
-                break;
-        
-            case 4:
-                r.unshift(10);
-                g.unshift(255);
-                b.unshift(10);
-                console.log("Green");
-                break;
-        
-            case 5:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(10);
-                console.log("Yellow");
-                break;
-        
-            case 6:
-                r.unshift(255);
-                g.unshift(160);
-                b.unshift(10);
-                console.log("Orange");
-                break;
-        
-            case 7:
-                r.unshift(255);
-                g.unshift(10);
-                b.unshift(130);
-                console.log("Pink");
-                break;
-        
-            case 8:
-                r.unshift(255);
-                g.unshift(10);
-                b.unshift(10);
-                console.log("Red");
-                break;
-        
-            case 9:
-                r.unshift(180);
-                g.unshift(50);
-                b.unshift(255);
-                console.log("Purple");
-                break;
-        
-            default:
-                r.unshift(255);
-                g.unshift(255);
-                b.unshift(255);
-                console.log("White");
-            }
+            r.unshift(0);
+            g.unshift(0);
+            b.unshift(0);
 
             radius = slider.value();
             mhx = [];
@@ -339,20 +182,22 @@ if(isMobileDevice() == true){
 
 //--------------------------------------- Clear Canvas function
 function clearfunc(){
-    background(0);
+    background(255);
+    background(img);
     undoHistoryX = [];
     undoHistoryY = [];
     mhx = [];
     mhy = [];
-    r = [];
-    g = [];
-    b = [];
+    r = [0];
+    g = [0];
+    b = [0];
     lastradius = [];
 }
 
 //--------------------------------------- Undo Function
 function undofunc(){
-    background(0);
+    background(255);
+    background(img);
     lastradius.shift();
     undoHistoryX.shift();
     undoHistoryY.shift();
@@ -373,12 +218,16 @@ function undofunc(){
 
 //--------------------------------------- Eraser Setter
 function setEraser(){
-    colorNumber = 2;
+    r.shift(255);
+    g.shift(255);
+    b.shift(255);
 }
 
 //--------------------------------------- Brush Setter
 function setBrush(){
-    colorNumber = 1;
+    r.shift(0);
+    g.shift(0);
+    b.shift(0);
 }
 
 //--------------------------------------- Submit Button Function
